@@ -4,16 +4,17 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
-
 // Create express app
 const app = express();
 
-console.log(process.env.DATABASE_PASSWORD)
+console.log(process.env.DATABASE_PASSWORD);
 // Database
 mongoose.connect(
   'mongodb+srv://SarbjotSingh:' +
-  process.env.DATABASE_PASSWORD +
-    '@cluster0.w61qd.mongodb.net/' +process.env.DATABASE_NAME+'?retryWrites=true&w=majority',
+    process.env.DATABASE_PASSWORD +
+    '@cluster0.w61qd.mongodb.net/' +
+    process.env.DATABASE_NAME +
+    '?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -39,4 +40,5 @@ const QuotesRoute = require('./routes/Quotes');
 app.use('/quotes', QuotesRoute);
 
 // Starting server
-app.listen(3000, console.log('Listening on port 3000'));
+const port = process.env.port || 3000;
+app.listen(port, console.log('Listening on port 3000'));
