@@ -7,7 +7,6 @@ require('dotenv').config();
 // Create express app
 const app = express();
 
-console.log(process.env.DATABASE_PASSWORD);
 // Database
 mongoose.connect(
   'mongodb+srv://SarbjotSingh:' +
@@ -41,4 +40,4 @@ app.use('/quotes', QuotesRoute);
 
 // Starting server
 const port = process.env.PORT || 3000;
-app.listen(port, console.log('Listening on port 3000'));
+app.listen(port, console.log('Listening on port ' + port));
