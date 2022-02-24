@@ -11,12 +11,11 @@ router.get('/all', async (req, res) => {
 
 // Search by content
 // /quote?amount=5
-// router.get('/amount', async (req, res) => {
-//   const quotes = await Quote.find();
-//   //res.json({ 'count: ': req.query.id });
-//   let randomSubset = getRandomSubarray(quotes, req.query.count);
-//   res.json(randomSubset);
-// });
+router.get('/amount', async (req, res) => {
+  const quotes = await Quote.find();
+  let randomSubset = getRandomSubarray(quotes, req.query.count);
+  res.json(randomSubset);
+});
 
 // Create new quote
 router.post('/new', async (req, res) => {
@@ -53,7 +52,6 @@ router.get('/author', async (req, res) => {
 
     return quoteAuthor === paramAuthor;
   });
-  //let randomSubset = getRandomSubarray(quotes, req.query.count);
   res.json(filteredQuotes);
 });
 
@@ -66,7 +64,6 @@ router.get('/authors', async (req, res) => {
     (author) => author.trim().toLowerCase() !== 'unknown',
   );
   let uniqueAuthors = [...new Set(filteredAuthors)];
-  //let randomSubset = getRandomSubarray(quotes, req.query.count);
   res.json(uniqueAuthors);
 });
 
