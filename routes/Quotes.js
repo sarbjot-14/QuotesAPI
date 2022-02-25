@@ -12,6 +12,7 @@ router.get('/all', async (req, res) => {
 // Search by content
 // /quote?amount=5
 router.get('/amount', async (req, res) => {
+  console.log('count is ' + req.query.count);
   const quotes = await Quote.find();
   let randomSubset = getRandomSubarray(quotes, req.query.count);
   res.json(randomSubset);
