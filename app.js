@@ -7,7 +7,7 @@ const Quote = require('./models/Quotes');
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: 'Library API',
+      title: 'Quotes API',
       version: '1.0.0',
     },
   },
